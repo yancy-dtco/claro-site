@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --midnight:   #0D1B2A;
+  --ink:        #1A2E4A;
+  --cobalt:     #2C5282;
+  --horizon:    #4A7AB5;
+  --sky:        #A8C5E8;
+  --ice:        #E8F1FA;
+  --warm-white: #F7F4EF;
+  --gold:       #C9A84C;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--warm-white);
+  color: var(--midnight);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--warm-white);
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--midnight);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: 'Inter', system-ui, sans-serif;
+}
