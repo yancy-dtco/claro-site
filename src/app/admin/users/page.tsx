@@ -71,7 +71,7 @@ export default async function UsersPage() {
             >
               <div>
                 <p style={{ fontSize: '14px', color: 'var(--midnight)', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>{user.email as string}</p>
-                {user.full_name && <p style={{ fontSize: '12px', color: 'var(--horizon)', fontFamily: 'Inter, system-ui, sans-serif' }}>{user.full_name as string}</p>}
+                {user.full_name ? <p style={{ fontSize: '12px', color: 'var(--horizon)', fontFamily: 'Inter, system-ui, sans-serif' }}>{String(user.full_name)}</p> : null}
               </div>
 
               <span style={{
