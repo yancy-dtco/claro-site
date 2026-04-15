@@ -1,5 +1,11 @@
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "How It Works — Claro",
+  description: "How Claro builds a complete buyer intelligence picture from real signals — Etsy reviews, Reddit, and community forums.",
+};
 
 const steps = [
   {
@@ -32,23 +38,19 @@ const steps = [
 const sources = [
   {
     name: "Etsy Reviews",
-    description:
-      "What buyers say after they buy — the most direct signal of what they valued, what surprised them, and what they'll tell their friends.",
+    description: "What buyers say after they buy — the most direct signal of what they valued, what surprised them, and what they'll tell their friends.",
   },
   {
     name: "Reddit Communities",
-    description:
-      "r/EtsySellers, r/Etsy, and category-specific communities where your buyers ask questions, share experiences, and use their real vocabulary.",
+    description: "r/EtsySellers, r/Etsy, and category-specific communities where your buyers ask questions, share experiences, and use their real vocabulary.",
   },
   {
     name: "Product Reviews (Across Platforms)",
-    description:
-      "Buyers in your category leave signals everywhere — not just on Etsy. Claro reads the cross-platform pattern to build a complete picture.",
+    description: "Buyers in your category leave signals everywhere — not just on Etsy. Claro reads the cross-platform pattern to build a complete picture.",
   },
   {
     name: "Community Forums & Discussions",
-    description:
-      "Where your buyers go when they're deciding. What they compare. What they worry about. What finally tips them over to buy.",
+    description: "Where your buyers go when they're deciding. What they compare. What they worry about. What finally tips them over to buy.",
   },
 ];
 
@@ -59,7 +61,7 @@ export default function HowItWorks() {
       <main style={{ background: "var(--warm-white)" }}>
 
         {/* Hero */}
-        <section style={{ paddingTop: "120px", paddingBottom: "80px", padding: "120px 40px 80px", textAlign: "center" }}>
+        <section style={{ paddingTop: "100px", paddingBottom: "64px", paddingLeft: "40px", paddingRight: "40px", textAlign: "center" }}>
           <div style={{ maxWidth: "680px", margin: "0 auto" }}>
             <h1 style={{ fontSize: "clamp(40px, 5vw, 60px)", marginBottom: "24px" }}>
               You&rsquo;ve been building for someone.{" "}
@@ -72,48 +74,47 @@ export default function HowItWorks() {
           </div>
         </section>
 
-        {/* Step by step */}
-        <section style={{ padding: "0 40px 96px", maxWidth: "900px", margin: "0 auto" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-            {steps.map((step, i) => (
-              <div
-                key={step.num}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "80px 1fr",
-                  gap: "32px",
-                  paddingBottom: "48px",
-                  borderLeft: i < steps.length - 1 ? "2px solid var(--sky)" : "2px solid transparent",
-                  marginLeft: "40px",
-                  paddingLeft: "40px",
-                  position: "relative",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    left: "-17px",
-                    top: "0",
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "50%",
-                    background: "var(--cobalt)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span style={{ fontSize: "13px", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 600, color: "var(--warm-white)" }}>
-                    {parseInt(step.num)}
+        {/* Steps */}
+        <section style={{ paddingBottom: "96px", paddingLeft: "40px", paddingRight: "40px", maxWidth: "800px", margin: "0 auto" }}>
+          {steps.map((step, i) => (
+            <div
+              key={step.num}
+              style={{
+                display: "flex",
+                gap: "32px",
+                marginBottom: i < steps.length - 1 ? "0" : "0",
+                position: "relative",
+              }}
+            >
+              {/* Left: number + line */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: "48px" }}>
+                <div style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  background: "var(--cobalt)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  zIndex: 1,
+                }}>
+                  <span style={{ fontSize: "14px", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 700, color: "var(--warm-white)" }}>
+                    {i + 1}
                   </span>
                 </div>
-                <div style={{ paddingLeft: "48px" }}>
-                  <h3 style={{ fontSize: "24px", marginBottom: "12px" }}>{step.title}</h3>
-                  <p style={{ fontSize: "17px", color: "var(--ink)", lineHeight: 1.7 }}>{step.body}</p>
-                </div>
+                {i < steps.length - 1 && (
+                  <div style={{ width: "2px", flex: 1, background: "var(--sky)", minHeight: "48px" }} />
+                )}
               </div>
-            ))}
-          </div>
+
+              {/* Right: content */}
+              <div style={{ paddingBottom: i < steps.length - 1 ? "48px" : "0", flex: 1, minWidth: 0 }}>
+                <h3 style={{ fontSize: "24px", marginBottom: "12px", marginTop: "6px" }}>{step.title}</h3>
+                <p style={{ fontSize: "17px", color: "var(--ink)", lineHeight: 1.7 }}>{step.body}</p>
+              </div>
+            </div>
+          ))}
         </section>
 
         {/* Where Claro gets its signals */}
@@ -130,15 +131,7 @@ export default function HowItWorks() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "24px" }}>
               {sources.map((s) => (
-                <div
-                  key={s.name}
-                  style={{
-                    background: "var(--ink)",
-                    borderRadius: "16px",
-                    padding: "32px",
-                    borderTop: "3px solid var(--cobalt)",
-                  }}
-                >
+                <div key={s.name} style={{ background: "var(--ink)", borderRadius: "16px", padding: "32px", borderTop: "3px solid var(--cobalt)" }}>
                   <h4 style={{ fontSize: "18px", color: "var(--warm-white)", marginBottom: "12px" }}>{s.name}</h4>
                   <p style={{ fontSize: "15px", color: "var(--sky)", lineHeight: 1.6 }}>{s.description}</p>
                 </div>
@@ -151,41 +144,15 @@ export default function HowItWorks() {
         <section style={{ padding: "96px 40px" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "56px" }}>
-              <h2 style={{ fontSize: "clamp(32px, 4vw, 48px)", marginBottom: "16px" }}>
-                The difference is specific.
-              </h2>
-              <p style={{ fontSize: "18px", color: "var(--ink)" }}>
-                Vague output is worse than nothing. Claro never hedges.
-              </p>
+              <h2 style={{ fontSize: "clamp(32px, 4vw, 48px)", marginBottom: "16px" }}>The difference is specific.</h2>
+              <p style={{ fontSize: "18px", color: "var(--ink)" }}>Vague output is worse than nothing. Claro never hedges.</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
               {[
-                {
-                  label: "Generic AI",
-                  labelColor: "#e57373",
-                  bg: "var(--ice)",
-                  border: "#c0392b",
-                  text: "var(--ink)",
-                  quote: "Your audience values quality and may respond to messaging around craftsmanship.",
-                },
-                {
-                  label: "Claro",
-                  labelColor: "var(--gold)",
-                  bg: "var(--cobalt)",
-                  border: "var(--gold)",
-                  text: "var(--warm-white)",
-                  quote: "Your buyer Googles 'non-toxic' before she reads the price. Lead with what's in it, not what it looks like.",
-                },
+                { label: "Generic AI", labelColor: "#e57373", bg: "var(--ice)", border: "#c0392b", text: "var(--ink)", quote: "Your audience values quality and may respond to messaging around craftsmanship." },
+                { label: "Claro", labelColor: "var(--gold)", bg: "var(--cobalt)", border: "var(--gold)", text: "var(--warm-white)", quote: "Your buyer Googles \u2018non-toxic\u2019 before she reads the price. Lead with what\u2019s in it, not what it looks like." },
               ].map((card) => (
-                <div
-                  key={card.label}
-                  style={{
-                    background: card.bg,
-                    borderRadius: "16px",
-                    padding: "36px",
-                    borderTop: `3px solid ${card.border}`,
-                  }}
-                >
+                <div key={card.label} style={{ background: card.bg, borderRadius: "16px", padding: "36px", borderTop: `3px solid ${card.border}` }}>
                   <p style={{ fontSize: "11px", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 600, color: card.labelColor, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "20px" }}>
                     {card.label}
                   </p>
@@ -204,23 +171,8 @@ export default function HowItWorks() {
             <h2 style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "var(--warm-white)", marginBottom: "20px" }}>
               Ready to meet your buyer?
             </h2>
-            <p style={{ fontSize: "18px", color: "var(--sky)", marginBottom: "40px" }}>
-              Free report. No credit card. Two minutes.
-            </p>
-            <a
-              href="/#get-started"
-              style={{
-                display: "inline-block",
-                padding: "16px 36px",
-                background: "var(--gold)",
-                color: "var(--midnight)",
-                borderRadius: "8px",
-                fontSize: "16px",
-                fontFamily: "Inter, system-ui, sans-serif",
-                fontWeight: 700,
-                textDecoration: "none",
-              }}
-            >
+            <p style={{ fontSize: "18px", color: "var(--sky)", marginBottom: "40px" }}>Free. No credit card. Two minutes.</p>
+            <a href="/#get-started" style={{ display: "inline-block", padding: "16px 36px", background: "var(--gold)", color: "var(--midnight)", borderRadius: "8px", fontSize: "16px", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 700, textDecoration: "none" }}>
               Get your free buyer report →
             </a>
           </div>
