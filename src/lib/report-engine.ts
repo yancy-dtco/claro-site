@@ -315,7 +315,9 @@ export async function generateReport(reportId: string): Promise<void> {
     }).eq('id', reportId)
 
     // Increment usage counter
-    await supabaseAdmin.rpc('increment_reports_used', { p_user_id: report.user_id }).catch(() => null)
+    try {
+      await supabaseAdmin.rpc('increment_reports_used', { p_user_id: report.user_id })
+    } catch { /* ignore if function not defined */ }
 
     // Send report-ready email
     const userEmail = (report as { profiles?: { email?: string } }).profiles?.email
