@@ -5,6 +5,7 @@
 
 import Anthropic from '@anthropic-ai/sdk'
 import { supabaseAdmin, type SubscriptionTier } from './supabase'
+import { sendReportReadyEmail } from './email'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
 
@@ -314,7 +315,21 @@ export async function generateReport(reportId: string): Promise<void> {
     }).eq('id', reportId)
 
     // Increment usage counter
-    await supabaseAdmin.rpc('increment_reports_used', { p_user_id: report.user_id })
+    await supabaseAdmin.rpc('increment_reports_used', { p_user_id: report.user_id }).catch(() => null)
+
+    // Send report-ready email
+    const userEmail = (report as { profiles?: { email?: string } }).profiles?.email
+    if (userEmail) {
+      const shopOrCategory = report.input_shop_url || report.input_category || 'your shop'
+      const persona = output.buyer_profile?.persona_name
+      await sendReportReadyEmail(
+        userEmail,
+        reportId,
+        shopOrCategory,
+        persona,
+        allSignals.length
+      ).catch(console.error)
+    }
 
   } catch (err) {
     console.error('[ReportEngine] Failed:', err)
