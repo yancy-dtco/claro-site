@@ -1,5 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { ReportForm } from "@/components/ReportForm";
 
 const testimonials = [
   { quote: "I finally feel like I know who I'm talking to.", shop: "ceramics seller, Etsy" },
@@ -125,56 +126,9 @@ export default function Home() {
             </p>
 
             {/* CTA form */}
-            <div
-              id="get-started"
-              style={{
-                display: "flex",
-                gap: "12px",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                marginBottom: "16px",
-              }}
-            >
-              <input
-                type="text"
-                placeholder="Your Etsy shop URL or product category"
-                style={{
-                  width: "320px",
-                  padding: "14px 18px",
-                  background: "var(--ice)",
-                  border: "1px solid var(--sky)",
-                  borderRadius: "8px",
-                  fontSize: "15px",
-                  fontFamily: "Inter, system-ui, sans-serif",
-                  color: "var(--midnight)",
-                  outline: "none",
-                }}
-              />
-              <button
-                style={{
-                  padding: "14px 28px",
-                  background: "var(--gold)",
-                  color: "var(--midnight)",
-                  borderRadius: "8px",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  fontFamily: "Inter, system-ui, sans-serif",
-                  whiteSpace: "nowrap",
-                  transition: "background 150ms",
-                }}
-              >
-                Get your free report →
-              </button>
+            <div id="get-started">
+              <ReportForm />
             </div>
-            <p
-              style={{
-                fontSize: "13px",
-                color: "var(--horizon)",
-                fontFamily: "Inter, system-ui, sans-serif",
-              }}
-            >
-              Free. No credit card. Ready in 2 minutes.
-            </p>
           </div>
 
           {/* Social proof strip */}
@@ -758,54 +712,7 @@ export default function Home() {
               Claro helps you hear it.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "12px",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                marginBottom: "16px",
-              }}
-            >
-              <input
-                type="text"
-                placeholder="Your Etsy shop URL or product category"
-                style={{
-                  width: "320px",
-                  padding: "14px 18px",
-                  background: "rgba(232,241,250,0.15)",
-                  border: "1px solid rgba(168,197,232,0.4)",
-                  borderRadius: "8px",
-                  fontSize: "15px",
-                  fontFamily: "Inter, system-ui, sans-serif",
-                  color: "var(--warm-white)",
-                  outline: "none",
-                }}
-              />
-              <button
-                style={{
-                  padding: "14px 28px",
-                  background: "var(--gold)",
-                  color: "var(--midnight)",
-                  borderRadius: "8px",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  fontFamily: "Inter, system-ui, sans-serif",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Get your free report →
-              </button>
-            </div>
-            <p
-              style={{
-                fontSize: "13px",
-                color: "var(--sky)",
-                fontFamily: "Inter, system-ui, sans-serif",
-              }}
-            >
-              Free. No credit card. Ready in 2 minutes.
-            </p>
+            <ReportForm />
           </div>
         </section>
 

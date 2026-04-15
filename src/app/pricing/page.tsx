@@ -1,5 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -137,9 +138,11 @@ export default function Pricing() {
                 </div>
               </div>
               <p style={{ fontSize: "15px", color: "var(--sky)", lineHeight: 1.6, flexGrow: 1 }}>Everything in Tier 1, plus your brand voice, positioning, and messaging pillars.</p>
-              <a href="/#get-started" style={{ display: "block", padding: "12px 24px", background: "var(--warm-white)", color: "var(--cobalt)", borderRadius: "8px", fontSize: "15px", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 700, textAlign: "center", textDecoration: "none" }}>
-                Get started
-              </a>
+              <CheckoutButton
+                priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_T2 || ""}
+                label="Get started"
+                style={{ background: "var(--warm-white)", color: "var(--cobalt)" }}
+              />
             </div>
 
             {/* Tier 3 */}
@@ -152,9 +155,11 @@ export default function Pricing() {
                 </div>
               </div>
               <p style={{ fontSize: "15px", color: "var(--ink)", lineHeight: 1.6, flexGrow: 1 }}>Everything in Tier 2, plus written content — calendar, posts, listing copy — refreshed monthly.</p>
-              <a href="/#get-started" style={{ display: "block", padding: "12px 24px", background: "var(--cobalt)", color: "var(--warm-white)", borderRadius: "8px", fontSize: "15px", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 600, textAlign: "center", textDecoration: "none" }}>
-                Get started
-              </a>
+              <CheckoutButton
+                priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_T3 || ""}
+                label="Get started"
+                style={{ background: "var(--cobalt)", color: "var(--warm-white)" }}
+              />
             </div>
           </div>
         </section>
