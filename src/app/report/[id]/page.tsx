@@ -163,14 +163,22 @@ export default async function ReportPage({ params }: ReportPageProps) {
   }
 
   // Complete — render the full report
-  const profile = report.output_buyer_profile as Record<string, unknown> | null;
-  const vocabulary = report.output_buyer_vocabulary as Record<string, unknown> | null;
-  const triggers = report.output_purchase_triggers as Array<Record<string, string>> | null;
-  const barriers = report.output_purchase_barriers as Array<Record<string, string>> | null;
-  const angles = report.output_content_angles as Array<Record<string, string>> | null;
-  const gaps = report.output_competitor_gaps as Array<Record<string, string>> | null;
-  const brandVoice = report.output_brand_voice as Record<string, unknown> | null;
-  const positioning = report.output_positioning as Record<string, unknown> | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const profile = report.output_buyer_profile as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const vocabulary = report.output_buyer_vocabulary as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const triggers = report.output_purchase_triggers as any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const barriers = report.output_purchase_barriers as any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const angles = report.output_content_angles as any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const gaps = report.output_competitor_gaps as any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const brandVoice = report.output_brand_voice as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const positioning = report.output_positioning as any;
   const tier = report.tier_at_generation;
 
   return (
