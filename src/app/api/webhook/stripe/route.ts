@@ -56,8 +56,8 @@ export async function POST(req: NextRequest) {
           stripe_subscription_id: subscriptionId,
           stripe_price_id: priceId,
           reports_limit: TIER_LIMITS[tier] || 10,
-          current_period_start: new Date(stripeSub.current_period_start * 1000).toISOString(),
-          current_period_end: new Date(stripeSub.current_period_end * 1000).toISOString(),
+          current_period_start: new Date((stripeSub as any).current_period_start * 1000).toISOString(),
+          current_period_end: new Date((stripeSub as any).current_period_end * 1000).toISOString(),
         }, { onConflict: 'user_id' })
 
         console.log(`[Webhook] Upgraded user ${userId} to ${tier}`)
