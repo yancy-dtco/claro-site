@@ -81,9 +81,9 @@ export async function POST(req: NextRequest) {
           status,
           stripe_price_id: priceId,
           reports_limit: TIER_LIMITS[tier] || 10,
-          current_period_start: new Date(sub.current_period_start * 1000).toISOString(),
-          current_period_end: new Date(sub.current_period_end * 1000).toISOString(),
-          cancel_at_period_end: sub.cancel_at_period_end,
+          current_period_start: new Date((sub as any).current_period_start * 1000).toISOString(),
+          current_period_end: new Date((sub as any).current_period_end * 1000).toISOString(),
+          cancel_at_period_end: (sub as any).cancel_at_period_end,
         }).eq('user_id', userId)
 
         break
