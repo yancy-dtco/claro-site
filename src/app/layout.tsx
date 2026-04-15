@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Claro analyzes real conversations, reviews, and communities to build your complete buyer intelligence system — who they are, what drives them, and the exact words that make them buy.",
   metadataBase: new URL("https://meetclaro.ai"),
   verification: {
-    google: "eMzeVflQucFWrsmosypPiPEoP4OXcdkSlg9o-gzPufc",
+    google: "9wR0SdcHNgSB5UY4_2fAL_UKfVBDR6Xj85ydhm59n0k",
   },
   openGraph: {
     title: "Claro — Clarity about your buyer. Confidence in your brand.",
