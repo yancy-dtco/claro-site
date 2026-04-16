@@ -271,7 +271,7 @@ export async function generateReport(reportId: string): Promise<void> {
 
     // LLM synthesis
     const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-sonnet-4-5',
       max_tokens: 4096,
       messages: [
         {
@@ -309,7 +309,7 @@ export async function generateReport(reportId: string): Promise<void> {
       output_content_calendar: output.content_calendar || null,
       output_listing_rewrites: output.listing_rewrites || null,
       output_raw_llm_response: rawResponse,
-      llm_model: 'claude-3-5-sonnet-20241022',
+      llm_model: 'claude-sonnet-4-5',
       llm_tokens_used: message.usage?.input_tokens + message.usage?.output_tokens,
       processing_time_ms: processingMs,
     }).eq('id', reportId)
