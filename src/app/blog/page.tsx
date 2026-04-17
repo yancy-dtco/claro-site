@@ -241,6 +241,14 @@ const posts = [
     readTime: "10 min read",
     date: "April 2026",
   },
+  {
+    slug: "etsy-pricing-strategy",
+    title: "How to Price Your Etsy Products (Without Undervaluing Your Work)",
+    excerpt: "Most Etsy sellers are charging too little — and it's not an accident. Here's a practical pricing strategy that covers your real costs, reflects your value, and builds a sustainable business.",
+    category: "Etsy Growth",
+    readTime: "13 min read",
+    date: "April 2026",
+  },
 ];
 
 const categories = ["All", "Buyer Research", "Brand Strategy", "Content", "Etsy Growth", "AI & Tools"];
